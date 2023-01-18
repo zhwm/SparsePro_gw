@@ -49,15 +49,15 @@ optional arguments:
 
 ## Data
 
-To perform genome-wide fine-mapping, we need z-scores from GWAS summary statistics, LD matrix and optinally functional information data. 
+To perform genome-wide fine-mapping, we need z-scores from GWAS summary statistics, LD matrices and optinally functional information data. 
 
-1. ** GWAS z-scores ** file contains two columns: variant IDs and z-scores. An example file can be found at [C1_22.z](dat/C1_22.z)
+1. **GWAS z-scores** file contains two columns: variant IDs and z-scores. An example file can be found at [C1_22.z](dat/C1_22.z)
 
-2. ** LD matrix ** files contain Pearson correlation coefficient matrix. **Please make sure the REF/ALT alleles used in calculating LD are the same with the GWAS study!!** UK biobank LD information provided by PolyFun can be downloaded from [here](https://alkesgroup.broadinstitute.org/UKBB_LD/) and we have provided the [matchss.py](matchss.py) script to match alleles used in raw GWAS summary statistics with alleles used in calculating these LD matrix indicated at [22.rsid](ukb/22.rsid). 
+2. **LD matrix** files contain Pearson correlation coefficient matrix. **Please make sure the REF/ALT alleles used in calculating LD are the same as the GWAS study!!** UK biobank LD information provided by PolyFun can be downloaded from [here](https://alkesgroup.broadinstitute.org/UKBB_LD/). We have provided the [matchss.py](matchss.py) script to match alleles used in raw GWAS summary statistics with alleles used in calculating these LD matrix indicated at [22.rsid](ukb/22.rsid). 
 
-3. ** Functional annotation ** files with entries indicating annotations status for variants. An example can be find at [22.anno](ukb/22.anno).
+3. **Functional annotation** files with entries indicating annotation status for variants. An example can be find at [22.anno](ukb/22.anno).
 
-4. ** LD index ** file contains a list of LD blocks to be fine-mapped. An example can be find at [22.lst](ukb/22.lst).
+4. **LD index** file contains a list of LD blocks to be fine-mapped. An example can be find at [22.lst](ukb/22.lst).
 
 ## Match GWAS summary statistics with UK Biobank LD reference
 
@@ -77,7 +77,7 @@ python sparsepro_ukb.py --ukb ukb/22.lst --zdir dat/C1_22.z --N 353570 --save re
 
 ## Fine-map with GWAS summary statistics and relevant functional annotation
 
-With relevant functional information, we can also integrate it with GWAS summary statstics to further prioritize causal variants.
+We can also integrate relevant functional annotations with GWAS summary statstics to further prioritize causal variants.
 
 ```
 python sparsepro_ukb.py --ukb ukb/22.lst --zdir dat/C1_22.z --N 353570 --save result_anno --prefix C1 --verbose --LDdir path_to_ld_matrix --anno ukb/22.anno --aW result_no/C1.W1e-05 
@@ -87,4 +87,4 @@ python sparsepro_ukb.py --ukb ukb/22.lst --zdir dat/C1_22.z --N 353570 --save re
 
 If you use this software, please cite:
 
-[Wenmin Zhang, Hamed Najafabadi, Yue Li. SparsePro: an efficient genome-wide fine-mapping method integrating summary statistics and functional annotations. bioRxiv 2021.10.04.463133](https://doi.org/10.1101/2021.10.04.463133)
+[Wenmin Zhang, Hamed Najafabadi, Yue Li. SparsePro: an efficient fine-mapping method integrating summary statistics and functional annotations. bioRxiv 2021.10.04.463133](https://doi.org/10.1101/2021.10.04.463133)
