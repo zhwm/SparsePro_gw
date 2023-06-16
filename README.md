@@ -67,12 +67,12 @@ To obtain the GWAS z-scores for SparsePro, we use a raw GWAS summary statistics 
 python matchss.py --rss dat/C1.fastGWA --prefix C1 --save dat --idir ukb/ --CHR CHR --POS POS --A1 A1 --A2 A2 --BETA BETA --SE SE --ch 22
 ```
 
-## Fine-map with GWAS summary statistics and estimate functional enrichment
+## Fine-map with GWAS summary statistics
 
 After matching alleles, we can perform fine-mapping with z-scores and LD matrix downloaded from [PolyFun](https://alkesgroup.broadinstitute.org/UKBB_LD/).
 
 ```
-python sparsepro_ukb.py --ukb ukb/22.lst --zdir dat/C1_22.z --N 353570 --save result_no --prefix C1 --verbose --LDdir path_to_ld_matrix --anno ukb/22.anno
+python sparsepro_ukb.py --ukb ukb/22.lst --zdir dat/C1_22.z --N 353570 --save result_no --prefix C1 --verbose --LDdir path_to_ld_matrix
 ```
 
 ## Fine-map with GWAS summary statistics and relevant functional annotation
@@ -80,7 +80,7 @@ python sparsepro_ukb.py --ukb ukb/22.lst --zdir dat/C1_22.z --N 353570 --save re
 We can also integrate relevant functional annotations with GWAS summary statstics to further prioritize causal variants.
 
 ```
-python sparsepro_ukb.py --ukb ukb/22.lst --zdir dat/C1_22.z --N 353570 --save result_anno --prefix C1 --verbose --LDdir path_to_ld_matrix --anno ukb/22.anno --aW result_no/C1.W1e-05 
+python sparsepro_ukb.py --ukb ukb/22.lst --zdir dat/C1_22.z --N 353570 --save result_anno --prefix C1 --verbose --LDdir path_to_ld_matrix --anno ukb/22.anno --aW result_no/anno.W1e-05 
 ```
 
 ## Citations
